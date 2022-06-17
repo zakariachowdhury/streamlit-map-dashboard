@@ -82,8 +82,11 @@ def display_fraud_facts(df, year, quarter, state_name, report_type, field, title
     df = df[df['Report Type'] == report_type]
     if state_name:
         df = df[df['State Name'] == state_name]
-    df.drop_duplicates(inplace=True)  
-    total = df[field].sum() / len(df[field]) if is_median else df[field].sum()
+    df.drop_duplicates(inplace=True)
+    if is_median:
+        total = df[field].sum() / len(df[field]) if len(df) else 0
+    else:
+        total = df[field].sum()
     st.metric(title, string_format.format(round(total)))
 
 def main():
