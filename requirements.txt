@@ -1,5 +1,4 @@
-folium==0.12.1.post1
 pandas==1.2.4
-plotly==5.4.0
+folium==0.12.1.post1
 streamlit==1.10.0
 streamlit_folium==0.6.13

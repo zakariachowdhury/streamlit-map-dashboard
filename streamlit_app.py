@@ -3,7 +3,6 @@
 
 import streamlit as st
 import pandas as pd
-import plotly.express as px
 from streamlit_folium import st_folium
 import folium
 
@@ -64,18 +63,6 @@ def display_map(df, year, quarter):
         state_name = f['last_active_drawing']['properties']['name']
 
     return state_name
-
-def display_top_categories(df, year, quarter):
-    column_category = 'Category'
-    column_total_reports = 'Total Reports by Category'
-
-    df = filter_data(df, year, quarter)
-    df = df[[column_category, column_total_reports]]
-    df.drop_duplicates(inplace=True)    
-    df = df.sort_values(column_total_reports)
-
-    fig = px.bar(df, y=column_category, x=column_total_reports, orientation='h')
-    st.plotly_chart(fig, use_container_width=True)
 
 def display_fraud_facts(df, year, quarter, state_name, report_type, field, title, string_format='{:,}', is_median=False):
     df = filter_data(df, year, quarter)
