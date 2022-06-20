@@ -7,7 +7,7 @@ from streamlit_folium import st_folium
 import folium
 
 APP_TITLE = 'Fraud and Identity Theft Report'
-APP_SUB_TITLE = 'Data Source: Federal Trade Comission'
+APP_SUB_TITLE = 'Source: Federal Trade Commission'
 
 def filter_data(df, year, quarter):
     return df[(df['Year'] == year) & (df['Quarter'] == quarter)]
