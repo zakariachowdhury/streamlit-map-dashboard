@@ -24,7 +24,7 @@ def display_state_filter(df, state_name):
     return st.sidebar.selectbox('State', state_list, state_index)
 
 def display_report_type_filter():
-    return st.sidebar.selectbox('Report Type', ['Fraud', 'Other'])
+    return st.sidebar.radio('Report Type', ['Fraud', 'Other'])
 
 def display_map(df, year, quarter):
     df = df[(df['Year'] == year) & (df['Quarter'] == quarter)]
@@ -78,8 +78,8 @@ def main():
     #Load Data
     df_continental = pd.read_csv('data/AxS-Continental_Full Data_data.csv')
     df_fraud = pd.read_csv('data/AxS-Fraud Box_Full Data_data.csv')
-    df_loss = pd.read_csv('data/AxS-Losses Box_Full Data_data.csv')
     df_median = pd.read_csv('data/AxS-Median Box_Full Data_data.csv')
+    df_loss = pd.read_csv('data/AxS-Losses Box_Full Data_data.csv')
 
     #Display Filters and Map
     year, quarter = display_time_filters(df_continental)
